@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap-storybook';
 
 /**
- * Top Navigation Bar with expanded menu for mobile viewers.
+ * **-- WORK IN PROGRESS --**
+ * 
+ * Top Navigation will display as a header with brand and navigation links. Supports a mobile view where the menu links will expand into vertical sidebar menu drawers.
+ * 
  */
 export const TopNavigation = ({ showUserName, ...props }) => {
   return (
