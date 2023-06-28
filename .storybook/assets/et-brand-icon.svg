@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1021 1021">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #982372;
+      }
+
+      .cls-3 {
+        fill: #461d57;
+      }
+    </style>
+  </defs>
+  <g id="dot-bg">
+    <circle class="cls-1" cx="510.5" cy="510.5" r="510.5"/>
+  </g>
+  <g id="_1-1" data-name="1-1">
+    <circle class="cls-3" cx="312.55" cy="243.11" r="54.18"/>
+  </g>
+  <g id="_1-2" data-name="1-2">
+    <circle class="cls-3" cx="459.45" cy="243.11" r="54.18"/>
+  </g>
+  <g id="_2-1" data-name="2-1">
+    <circle class="cls-3" cx="312.55" cy="384.44" r="54.18"/>
+  </g>
+  <g id="_2-2" data-name="2-2">
+    <circle class="cls-2" cx="458.41" cy="384.44" r="38.31"/>
+  </g>
+  <g id="_3-1" data-name="3-1">
+    <circle class="cls-3" cx="312.55" cy="525.77" r="54.18"/>
+  </g>
+  <g id="_3-2" data-name="3-2">
+    <circle class="cls-3" cx="459.45" cy="525.77" r="54.18"/>
+  </g>
+  <g id="_3-3" data-name="3-3">
+    <circle class="cls-2" cx="604.27" cy="525.77" r="38.31"/>
+  </g>
+  <g id="_3-4" data-name="3-4">
+    <circle class="cls-3" cx="751.16" cy="525.77" r="54.18"/>
+  </g>
+  <g id="_4-3" data-name="4-3">
+    <circle class="cls-3" cx="605.31" cy="667.1" r="54.18"/>
+  </g>
+  <g id="_5-3" data-name="5-3">
+    <circle class="cls-3" cx="605.31" cy="808.43" r="54.18"/>
+  </g>
+</svg>

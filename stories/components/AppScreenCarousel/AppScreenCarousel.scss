@@ -1,0 +1,325 @@
+$breakpoint-size: (
+  xs: (max: 575px),
+  sm: (min: 576px,   max:767px),
+  md: (min:768px,    max:991px),
+  lg: (min: 992px,   max:1199px),
+  xl: (min: 1200px, max: 1399px),
+  xxl: (min: 1400px),
+  sm-and-lower: (max: 767px),
+  lg-and-bigger: (min: 992px)
+);
+@mixin breakpoint($size) {
+  @if $size == 'xs' {
+    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+  @else if $size == 'sm-and-lower' {
+    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+  @else if $size == 'xxl' {
+    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min')) {
+      @content;
+    };
+  }
+  @else if $size == 'lg-and-bigger' {
+    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min')) {
+      @content;
+    };
+  }
+  @else {
+    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min') ) and (max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+};
+
+.app-screen-carousel-container {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    @include breakpoint(lg-and-bigger) { 
+      padding-bottom: 0;
+    }
+    .app-screen-carousel-screen-card {
+      position: absolute;
+      width: 50%;
+      max-width: 250px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transition: all .6s ease;
+      cursor: pointer;
+    }
+    input[type=radio] {
+      display: none;
+    }
+    .app-screen-carousel-screens {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+}
+
+// SCREEN COUNT 3
+
+// left side screen
+#item-1:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-3, 
+#item-2:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-1, 
+#item-3:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-2 {
+  transform: translatex(-55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// right side screen
+#item-1:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-2, 
+#item-2:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-3, 
+#item-3:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-1 {
+  transform: translatex(55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// top screen
+#item-1:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-1, 
+#item-2:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-2, 
+#item-3:checked ~ .app-screen-carousel-count-3 #app-screen-carousel-screen-3 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+
+// SCREEN COUNT 4
+
+// left side screen
+#item-1:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-4, 
+#item-2:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-1, 
+#item-3:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-2,
+#item-4:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-3 {
+  transform: translatex(-55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// right side screen
+#item-1:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-2, 
+#item-2:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-3, 
+#item-3:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-4,
+#item-4:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-1 {
+  transform: translatex(55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// top screen
+#item-1:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-1, 
+#item-2:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-2, 
+#item-3:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-3,
+#item-4:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-4 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+// back screens
+#item-1:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-3,
+#item-2:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-4,
+#item-3:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-4 #app-screen-carousel-screen-2
+{
+  transform: translatex(0) scale(.6);
+  opacity: .2;
+  z-index: 0;
+}
+
+
+// SCREEN COUNT 5
+
+// left side screen
+#item-1:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-5, 
+#item-2:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-1, 
+#item-3:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-2,
+#item-4:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-3,
+#item-5:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-4 {
+  transform: translatex(-55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// right side screen
+#item-1:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-2, 
+#item-2:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-3, 
+#item-3:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-4,
+#item-4:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-5,
+#item-5:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-1 {
+  transform: translatex(55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// top screen
+#item-1:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-1, 
+#item-2:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-2, 
+#item-3:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-3,
+#item-4:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-4,
+#item-5:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-5 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+// back screens
+#item-1:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-3,
+#item-1:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-4,
+#item-2:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-4,
+#item-2:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-5,
+#item-3:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-5,
+#item-3:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-5 #app-screen-carousel-screen-3
+{
+  transform: translatex(0) scale(.6);
+  opacity: .2;
+  z-index: 0;
+}
+
+
+// SCREEN COUNT 6
+
+// left side screen
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6, 
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1, 
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5 {
+  transform: translatex(-55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// right side screen
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2, 
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3, 
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1 {
+  transform: translatex(55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// top screen
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1, 
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2, 
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+// back screens
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3,
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4,
+#item-1:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5,
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4,
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5,
+#item-2:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6,
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-5,
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6,
+#item-3:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-6,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-1,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-2,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-3,
+#item-6:checked ~ .app-screen-carousel-count-6 #app-screen-carousel-screen-4
+{
+  transform: translatex(0) scale(.6);
+  opacity: .2;
+  z-index: 0;
+}
+
+
+// SCREEN COUNT 7
+
+// left side screen
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7, 
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1, 
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6 {
+  transform: translatex(-55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// right side screen
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2, 
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3, 
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1 {
+  transform: translatex(55%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+// top screen
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1, 
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2, 
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+// back screens
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-1:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-2:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7,
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5,
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7,
+#item-3:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-6,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1,
+#item-4:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-7,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2,
+#item-5:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-1,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-6:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-2,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-3,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-4,
+#item-7:checked ~ .app-screen-carousel-count-7 #app-screen-carousel-screen-5
+{
+  transform: translatex(0) scale(.6);
+  opacity: .2;
+  z-index: 0;
+}

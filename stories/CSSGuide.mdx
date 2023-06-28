@@ -1,0 +1,225 @@
+# CSS Guide
+
+Stylesheet organization can be instrumental for getting a project up and running quickly, and making changes intuitive. Below are helpful guides for managing CSS/SCSS.
+
+## File Directory Structure
+
+Stylesheets can be set up with a parent file that pulls in all other stylesheets needed for the project. This serves as a table of contents for keeping CSS code organized and easy to find, with a clear heirarchy.
+
+**Example Table of Contents**
+```
+Imports
+-- Font Awesome
+-- Bootstrap
+-- Custom @font-face
+-- Variables
+
+Common
+-- General Layout
+-- Typography
+-- Button Overrides
+-- Forms
+
+Main Sections
+-- Admin
+-- User Facing
+-- Onboarding
+
+Specific Components
+-- Calendar
+-- Charts
+-- Navigation
+-- ...
+```
+
+## Size Units
+
+Sizing units for fonts, spacing, line-height, etc can be used in rem. Rem is different than em and can provide some more predictable results. Em is a unit of measure based on it's parent, while rem is based on a root level. Both have a benefit of being flexible and a goal to make a global change can be done simply, but because em follows it's parent, it can increase complexity if it's not expected when components are nested.
+
+Using an example of:
+
+```
+body { font-size: 16px; }
+ul { font-size: .75em; } *or* ul { font-size: .75rem; }
+```
+
+<table width="100%">
+<tr>
+<th>em</th>
+<th>rem</th>
+</tr>
+<tr>
+<td>
+
+```
+<body>            // 16px
+  <ul>            // 12px
+    <li>
+      <ul>        // 9px
+    ...
+
+```
+
+</td>
+<td>
+
+```
+<body>            // 16px
+  <ul>            // 12px
+    <li>
+      <ul>        // 12px
+    ...
+
+```
+
+</td>
+</tr>
+</table>
+
+## Variables
+Variables in SCSS are the powerhouse for making reuasable CSS structures. This file can store important information to the theme like font choices, base sizing, and include mixins and helpers for important functions that are reused throughout the stylesheets. Below is some useful content for this file:
+
+<table>
+<tr>
+<th width="200">Variable</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><strong>Font Stack</strong><br />$font-stack</td>
+<td>Specify the selected font and fallbacks to support. <br /><strong>$font-stack: "proxima", "Proxima Nova", "Lato", Helvetica, Arial, sans-serif;</strong></td>
+</tr>
+<tr>
+<td><strong>Font Size</strong><br />$font-size</td>
+<td>A default root unit of size for font to be on the body. Recommended starting point is always <strong>10px</strong>. This makes it easy later. With 10px root, all sizing can be done in rem but it relates to a pixel value for ease in setup. <strong>16px = 1.6rem</strong>. Later, changing this variable will proportiantely resize everything appropriately.<br /><strong>$font-size: 10px;</strong></td>
+</tr>
+<tr>
+<td><strong>Header Height</strong><br />$header-height</td>
+<td>Height of the header. This does not have to be used for setting any height explicitly, but it can. It's still useful for the following variable for calculations.<br /><strong>$header-height: 70px;</strong></td>
+</tr>
+<tr>
+<td><strong>Sidebar Min Height</strong><br />$sidebar-min-height</td>
+<td>In the case of a sidebar that should be the full height of the window - minus the header, this can be a useful variable.<br /><strong>$sidebar-min-height: calc(100vh - $header-height);</strong></td>
+</tr>
+</table>
+
+## Mixins and Helpers 
+
+The power of SCSS gives huge benefits for simplifying common tasks.
+
+### Deep Get Utility
+
+This allows the next several mixins to successfully navigate maps of variables.
+
+```
+/* deep get helper for maps */
+@function map-deep-get($map, $keys...){
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+```
+
+### Color Palette
+
+Setting up a color palette to be used reduces any reason to have hex code used within the application's stylesheets. This makes global changes much easier, and there's no need to reference a variable list as often.
+
+```
+@function palette($col, $variation:'base'){
+  @return map-get(map-get($color, $col), $variation);
+}
+
+$color: (
+  teal: (
+    light-50: #EDF2F2,
+    light-100: #A1BBBF,
+    light-300: #6D9BA2,
+    base: #456D73,
+    dark-600: #3C666C,
+    dark-700: #253E41,
+    dark-800: #192325,
+    dark-900: #121A1B
+  ),
+  grey: (
+    light-50: #FBFAF9,
+    light-100: #F6F4F3,
+    light-200: #EBE7E5,
+    light-300: #DBD5D1,
+    light-400: #C8C0BC,
+    base: #80736B,
+    dark-600: #58514D,
+    dark-700: #3F3631,
+    dark-800: #312A25,
+    dark-900: #221B17
+  ),
+  success: (
+    light: #B6CFB5,
+    base: #447F43,
+    dark: #102D10
+  ),
+  error: (
+    light: #F25A5A,
+    base: #C70505,
+    dark: #230101
+  )
+);
+```
+
+**Usage**
+
+`color: palette(teal); `<br />
+`background-color: palette(grey, light-300); `
+
+*Notes:*<br />
+*Do not add ' ' around colors.*<br />
+*If second argument is blank, 'base' is assumed.*
+
+### Breakpoint
+
+This mixin makes organizing responsive styling easy. It can be combined within the corresponding component being styled and makes the stylesheet easier to navigate. This is beneficial compared to other responsive styling strategies like a separate responsive stylesheet, which duplicates much of the necessary organization and makes finding relevant styles more difficult, or a media query block at the bottom of components that makes stylesheets more difficult to scan and read successfully.
+
+Another added benefit is this can be set up to match the framework being used, in this case Bootstrap, so custom CSS can match behavior based on established breakpoint impacting the grid used by standard Bootstrap classes.
+
+```
+$breakpoint-size: (
+  xs: (max: 575px),
+  sm: (min: 576px,   max:767px),
+  md: (min:768px,    max:991px),
+  lg: (min: 992px,   max:1199px),
+  xl: (min: 1200px),
+  sm-and-lower: (max: 767px)
+);
+@mixin breakpoint($size) {
+  @if $size == 'xs' {
+    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+  @else if $size == 'sm-and-lower' {
+    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+  @else if $size == 'xl' {
+    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min')) {
+      @content;
+    };
+  }
+  @else {
+    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min') ) and (max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
+      @content;
+    };
+  }
+};
+/* use: @include breakpoint(sm) { } */
+```
+**Usage**
+
+```
+.card {
+    text-align: left;
+    @include breakpoint(sm) {
+        text-align: center;
+    }
+}
+```

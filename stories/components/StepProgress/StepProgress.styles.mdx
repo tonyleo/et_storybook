@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Step Progress/Styles" />
+
+# Step Progress Styles
+
+```
+.step-progress-container {
+    margin-bottom: 2rem;
+}
+.step-progress-container h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+}
+.step-progress-container .step-progress {
+    display: flex;
+    gap: .5rem;
+    width: 15rem;
+}
+.step-progress-container .step-progress .step {
+    height: .5rem;
+    flex-grow: 1;
+    border-radius: 1rem;
+    transition: all .6s ease;
+    background-color: grey;
+}
+.step-progress-container .step-progress .step.complete {
+    background-color: red;
+}
+```
