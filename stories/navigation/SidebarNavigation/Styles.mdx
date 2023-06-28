@@ -1,0 +1,263 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Navigation/Sidebar Navigation/Styles" />
+
+# Sidebar Navigation Styles
+
+```
+.icon::before {
+    display:none;
+}
+.sidebar-navigation {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 240px;    
+    color: grey;                                        // color
+    @include breakpoint(sm-and-lower) {
+        width: 60px;
+    }
+    .brand {
+        padding: 1rem;
+        text-align: center;
+    }
+    hr {
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: grey;                                    // color
+    }
+    ul.primary-navigation {
+        list-style: none;
+        margin: 0;
+        padding: .5rem 0 0 0;
+        flex-grow: 1;
+        li {
+            padding: .5rem 1rem;
+            a {
+                i {
+                    margin-right: .5rem;
+                }
+                span {
+                    @include breakpoint(sm-and-lower) {
+                        display: none;
+                    }
+                }
+            }
+            &:not(.sub-navigation) {
+                transition: background-color .25s ease;
+                &:hover {
+                    background-color: rgba(0,0,0,.1);
+                }
+                a {
+                    display: flex;
+                    align-items: center;
+                    @include breakpoint(sm-and-lower) {
+                        justify-content: center;
+                        i {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+            &.sub-navigation {
+                padding: 0;
+                .accordion {
+                    background: none;
+                    border: 0;
+                    border-radius: 0;
+                    .accordion-item {
+                        border-radius: 0;
+                        background: none;
+                        border: 0;
+                        .accordion-header {
+                            background: none;
+                            font-size: 1.6rem;
+                            border: 0;
+                            &:hover {
+                                background-color: rgba(0,0,0,.1);
+                            }
+                            button {
+                                display: flex;
+                                align-items: center;
+                                background: none;
+                                border: 0;
+                                box-shadow: none;
+                                padding: .75rem 1rem;
+                                color: grey;                                        // color
+                                @include breakpoint(sm-and-lower) {
+                                    justify-content: center;
+                                }
+                                span {
+                                    display: flex;
+                                    align-items: center;
+                                    @include breakpoint(sm-and-lower) {
+                                        justify-content: center;
+                                    }
+                                    i {
+                                        margin-right: .5rem;
+                                        @include breakpoint(sm-and-lower) {
+                                            margin-right: 0rem;
+                                        }
+                                    }
+                                    span {
+                                        @include breakpoint(sm-and-lower) {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                                &:after {
+                                    font-family: 'Font Awesome 6 Pro';
+                                    content: '\f078';
+                                    background: none;
+                                    @include breakpoint(sm-and-lower) {
+                                        content: '\f0d7';
+                                        font-weight: 900;
+                                        position: absolute;
+                                        right: -5px;
+                                        top: 12px;
+                                        font-size: .75em;
+                                        transition: none;
+                                    }
+                                }
+                                &:focus {
+                                    box-shadow: none;
+                                }
+                                &:not(.collapsed) {
+                                    &:after {
+                                        top: 3px;
+                                        @include breakpoint(sm-and-lower) {
+                                            top: 7px;
+                                            right: 8px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .accordion-collapse {
+                            background: none;
+                            .accordion-body {
+                                padding: 0 0 .5rem;
+                                ul {
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                    li {
+                                        padding: .25rem 1rem .25rem 2.75rem;
+                                        font-size: .75em;
+                                        @include breakpoint(sm-and-lower) {
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sidebar-footer {
+        .dropup {
+            transition: background-color .25s ease;
+            &.show {
+                background-color: rgba(0,0,0,.1);
+            }
+            button {
+                display: block;
+                width: 100%;
+                background: none;
+                box-shadow: none;
+                color: grey;                                            // color
+                border: 0;
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                @include breakpoint(sm-and-lower) {
+                    justify-content: center;
+                }
+                &:after {
+                    border-top: .3em solid;
+                    border-bottom: 0;
+                }
+                &:focus {
+                    box-shadow: none;
+                }
+                i {
+                    margin-right: .5rem;
+                    @include breakpoint(sm-and-lower) {
+                        margin-right: 0;
+                    }
+                }
+                span {
+                    @include breakpoint(sm-and-lower) {
+                        display: none;
+                    }
+                }
+            }
+            .dropdown-menu {
+                margin-left: 2rem;
+                margin-bottom: -15px;
+                padding: 0;
+                background-color: white;                             // color
+                border-radius: .25rem;
+                border: 0;
+                box-shadow: 0 2px 12px rgba(0,0,0,.1);
+                a {
+                    padding: .5rem 1rem;
+                    transition: background-color .25s ease;
+                    &:hover {
+                        background-color: rgba(0,0,0,.1);
+                    }
+                    &:first-child {
+                        border-radius: .25rem .25rem 0 0;
+                    }
+                    &:last-child {
+                        border-radius: 0 0 .25rem .25rem;
+                    }
+                }
+                a {
+                    color: grey;                                    // color
+                }
+            }
+        }
+    }
+    &.dark {
+        color: white;                                               // color
+        background-color: grey;                                     // color
+        a {
+            color: white;                                           // color
+        }
+        ul.primary-navigation {
+            li {
+                &.sub-navigation {
+                    .accordion {
+                        .accordion-item {
+                            .accordion-header {
+                                button {
+                                    color: white;                   // color
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .sidebar-footer {
+            .dropup {
+                button {
+                    color: white;                                   // color
+                }
+                .dropdown-menu {
+                    background-color: white;                        // color
+                    a {
+                        color: grey;                                // color
+                    }
+                }
+            }
+        }
+    }
+}
+```
