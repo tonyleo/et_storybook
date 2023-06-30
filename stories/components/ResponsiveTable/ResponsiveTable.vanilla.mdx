@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Components/Responsive Table/Vanilla JS" />
+
+# Responsive Table Vanilla JS 
+
+```
+/* -- ResponsiveTable -- */
+
+function breakpoint() {
+    var currentBreakpoint;
+    var breakpointMaxWidths = [
+        {size: 'xs', max: 575},
+        {size: 'sm', max: 767},
+        {size: 'md', max: 991},
+        {size: 'lg', max: 1199}
+    ];
+    currentBreakpoint = breakpointMaxWidths.filter(bp => bp.max >= window.innerWidth);
+  
+    if(currentBreakpoint.length){
+        currentBreakpoint = currentBreakpoint[0].size;
+    } else {
+        currentBreakpoint = 'all';
+    }
+    return currentBreakpoint;
+}
+  
+function collapseColumnContent() {
+    // capture collapsible columns
+    var breakpointSizes = ['xs','sm', 'md', 'lg', 'all'];
+    var collapsingBreakpoints = [];
+    var currBp = breakpoint();
+    for(var i = breakpointSizes.length - 1; i >= 0; i--){
+        if(breakpointSizes[i] !== currBp){
+            collapsingBreakpoints.push(breakpointSizes[i]);
+        } else {
+            collapsingBreakpoints.push(breakpointSizes[i]);
+            break;
+        }
+    }
+    var collapseString = '';
+    collapsingBreakpoints.forEach(function(x){
+        collapseString += "[data-collapse='"+x+"'],";
+    });
+    collapseString = collapseString.slice(0, -1);
+    var collapsibleColumns = document.querySelectorAll(collapseString);
+    
+    // get reference info about each column
+    var colRefs = [];
+    collapsibleColumns.forEach(function(col){
+        var column = {
+            index: Array.prototype.indexOf.call(col.parentNode.children, col),
+            name: col.textContent
+        };
+        colRefs.push(column);
+        col.classList.add('d-none');
+    });
+  
+    if(colRefs.length) {
+        var table = document.getElementById("table");
+        var collapsedIndexes = colRefs.map(col => col.index);
+        for (var i = 1, row; row = table.rows[i]; i++) {
+            if(!row.classList.contains('expanded-row')){
+                row.classList.add('expandable-parent');
+                // capture collapsible content
+                var collapsedContent = [];
+                collapsedIndexes.forEach(function(i){
+                    collapsedContent.push(row.children[i].textContent);
+                    // remove content from main row
+                    row.children[i].classList.add('d-none');
+                });
+                // create expanded row
+                var collapsedNames = colRefs.map(col => col.name);
+                var newRollContent = "<td></td><td colspan='9'><div class='expanded-content'><table>";
+                collapsedNames.forEach(function(r,i){
+                    newRollContent += "<tr><td>";
+                    newRollContent +=r;
+                    newRollContent +="</td><td>";
+                    newRollContent +=collapsedContent[i];
+                    newRollContent +="</td></tr>";
+                });
+                newRollContent += "</table></td>";
+                var tr = document.createElement("tr");
+                tr.innerHTML = newRollContent;
+                tr.classList.add('expanded-row');
+                row.parentNode.insertBefore(tr, row.nextSibling);
+            };
+        };
+    }
+}
+  
+collapseColumnContent();
+  
+var completeFunction;
+window.addEventListener('resize', () => { 
+    clearTimeout(completeFunction);
+    completeFunction = setTimeout(collapseColumnContent, 200);
+});
+    
+// .expandable-trigger click
+var expandableTriggers = document.getElementsByClassName("expandable-trigger");
+var toggleExpandedRow = function() {
+    this.classList.toggle('fa-circle-plus');
+    this.classList.toggle('fa-circle-minus');
+    this.closest('tr').nextElementSibling.classList.toggle('expanded');
+};
+  
+Array.from(expandableTriggers).forEach(function(trigger) {
+    trigger.addEventListener('click', toggleExpandedRow);
+});
+```

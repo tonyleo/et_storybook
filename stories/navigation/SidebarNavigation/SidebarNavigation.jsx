@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './SidebarNavigation.scss';
-import { Accordion, Dropdown } from "react-bootstrap-storybook";
 
 /**
  * **-- WORK IN PROGRESS --**
@@ -10,7 +9,7 @@ import { Accordion, Dropdown } from "react-bootstrap-storybook";
  * 
  * Supports a light and dark mode. CSS is commented to find colors used in component and can be replaced with palette colors.
  */
-export const SidebarNavigation = ({dark, ...props }) => {
+export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
   return (
       <div className={dark ? "sidebar-navigation dark" : "sidebar-navigation"}>
         <div className="brand">
@@ -18,20 +17,29 @@ export const SidebarNavigation = ({dark, ...props }) => {
         </div>
         <hr />
         <ul className="primary-navigation">
-          <li className="sub-navigation">
-            <Accordion options={[
-              {
-                title: <span><i className="far fa-gear fa-fw"></i><span>Administration</span></span>,
-                component: 
-                  <ul>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                  </ul>,
-                id: "1"
-              }
-            ]}>
-            </Accordion>
+          <li className="sub-navigation-trigger" id="section-subnav">
+            <a href="#">
+              <i className="far fa-gear fa-fw"></i>
+              <span>Link</span>
+              <i className="far fa-chevron-down fa-fw"></i>
+            </a>
+            <ul className="sub-navigation-menu">
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li>
             <a href="#">
@@ -60,16 +68,39 @@ export const SidebarNavigation = ({dark, ...props }) => {
         </ul>
         <hr />
         <div className="sidebar-footer">
-          <Dropdown drop="up"><Dropdown.Toggle id="user-menu"><i className="far fa-circle-user fa-lg" /><span>User Name</span></Dropdown.Toggle><Dropdown.Menu><Dropdown.Item href="#">Profile</Dropdown.Item><Dropdown.Item href="#">Settings</Dropdown.Item><Dropdown.Item href="#">Logout</Dropdown.Item></Dropdown.Menu></Dropdown>
+          <a href="#">
+            <i className="far fa-circle-user fa-lg"></i>
+            <span>User Name</span>
+            <i className="far fa-ellipsis-vertical fa-fw"></i>
+          </a>
+          <ul className="sidebar-footer-menu">
+            <li>
+              <a href="#">
+                <span>Link</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Link</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Link</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
   );
 };
 
 SidebarNavigation.propTypes = {
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  lockedFooter: PropTypes.bool
 };
 
 SidebarNavigation.defaultProps = {
-  dark: true
+  dark: true,
+  lockedFooter: true
 };
