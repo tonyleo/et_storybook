@@ -19,6 +19,8 @@ import './ResponsiveTable.scss';
  * Content will be collapsed at all breakpoints smaller than it's setting. Ex, `data-collapse="sm"` will collapse that content at xs and sm breakpoints.
  * 
  */
+
+
 export const ResponsiveTable = ({ ...props }) => {
   return (
     <table className="responsive-table" id="table">
