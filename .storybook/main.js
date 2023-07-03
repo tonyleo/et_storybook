@@ -8,14 +8,7 @@ const config = {
     "@storybook/addon-interactions",
     "@whitespace/storybook-addon-html",
     "@storybook/addon-viewport",
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        sass: {
-          implementation: require('sass'),
-        }
-      }
-    }
+    "@storybook/preset-scss",
   ],
   framework: {
     name: "@storybook/react-webpack5",

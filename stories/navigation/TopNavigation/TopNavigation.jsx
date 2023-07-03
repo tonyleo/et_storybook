@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap-storybook';
+import '../../global-styles.scss';
 
 /**
  * **-- WORK IN PROGRESS --**

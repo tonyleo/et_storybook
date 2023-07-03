@@ -1,40 +1,4 @@
-$breakpoint-size: (
-  xs: (max: 575px),
-  sm: (min: 576px,   max:767px),
-  md: (min:768px,    max:991px),
-  lg: (min: 992px,   max:1199px),
-  xl: (min: 1200px, max: 1399px),
-  xxl: (min: 1400px),
-  sm-and-lower: (max: 767px),
-  lg-and-bigger: (min: 992px)
-);
-@mixin breakpoint($size) {
-  @if $size == 'xs' {
-    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
-      @content;
-    };
-  }
-  @else if $size == 'sm-and-lower' {
-    @media(max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
-      @content;
-    };
-  }
-  @else if $size == 'xxl' {
-    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min')) {
-      @content;
-    };
-  }
-  @else if $size == 'lg-and-bigger' {
-    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min')) {
-      @content;
-    };
-  }
-  @else {
-    @media(min-width: map-get(map-get($breakpoint-size, $size), 'min') ) and (max-width: map-get(map-get($breakpoint-size,$size), 'max')) {
-      @content;
-    };
-  }
-};
+@import '../../global-styles';
 
 .app-screen-carousel-container {
     width: 100%;
