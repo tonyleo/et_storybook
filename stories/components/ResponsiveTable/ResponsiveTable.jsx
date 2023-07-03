@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ResponsiveTable.scss';
 
 /**
- * **-- WORK IN PROGRESS --**
+ * <span className="status-badge workinprogress">Work In Progress</span>
  * 
  * Controls for a table that gracefully handles responsive states.
  * 

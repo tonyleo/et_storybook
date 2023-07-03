@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap-storybook';
 import '../../global-styles.scss';
 
 /**
- * **-- WORK IN PROGRESS --**
+ * <span className="status-badge workinprogress">Work In Progress</span>
  * 
  * Top Navigation will display as a header with brand and navigation links. Supports a mobile view where the menu links will expand into vertical sidebar menu drawers.
  * 

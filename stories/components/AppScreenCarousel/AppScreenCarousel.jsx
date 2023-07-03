@@ -4,6 +4,9 @@ import '../../global-styles.scss';
 import './AppScreenCarousel.scss';
 
 /**
+ * 
+ * <span className="status-badge workinprogress">Work In Progress</span>
+ * 
  * Carousel for showing App Screens. Will work for any vertically oriented graphic.
  * 
  * When using with app screens, works best with a transparent background and any shadow already applied to the image. Controls can be operated by clicking the adjacent screens to navigate, or programmatically with JS. Active screen is controlled by a hidden group of radio buttons with name `app-screen-carousel-slider`.
