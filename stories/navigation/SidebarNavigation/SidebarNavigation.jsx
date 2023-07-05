@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './SidebarNavigation.scss';
 
@@ -23,7 +23,11 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
     } else {
       e.target.parentNode.querySelector('.dropdown-arrow').classList.toggle('spin-icon-up');
     }
+  }
 
+  const toggleSidebarFooter = (e) => {
+    e.preventDefault();
+    document.getElementsByClassName('sidebar-footer-menu')[0].classList.toggle('show');
   }
 
   return (
@@ -86,7 +90,7 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
         </ul>
         <hr />
         <div className="sidebar-footer">
-          <a href="#">
+          <a href="#" id="sidebar-footer-toggle" onClick={toggleSidebarFooter}>
             <i className="fal fa-circle-user fa-lg"></i>
             <span>
               User Name<br />
@@ -97,17 +101,22 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
           <ul className="sidebar-footer-menu">
             <li>
               <a href="#">
-                <span>Link</span>
+                <span>Profile</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span>Link</span>
+                <span>Notification Settings</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span>Link</span>
+                <span>Change Password</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Log Out</span>
               </a>
             </li>
           </ul>
