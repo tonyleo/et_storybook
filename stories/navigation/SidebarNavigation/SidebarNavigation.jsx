@@ -21,7 +21,7 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
     if(e.target.classList.contains('dropdown-arrow')) {
       e.target.classList.toggle('spin-icon-up');
     } else {
-      console.log('not-dropdown');
+      e.target.parentNode.querySelector('.dropdown-arrow').classList.toggle('spin-icon-up');
     }
 
   }
