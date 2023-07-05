@@ -10,18 +10,28 @@ import './SidebarNavigation.scss';
  * Supports a light and dark mode. CSS is commented to find colors used in component and can be replaced with palette colors.
  */
 export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
+
+  const handleSubNav = (e) => {
+    e.preventDefault();
+    if(e.target.tagName.toLowerCase() === 'li' || e.target.tagName.toLowerCase() === 'a'){
+      e.target.nextSibling.classList.toggle('show');
+    } else {
+      e.target.parentNode.nextSibling.classList.toggle('show');
+    }
+
+  }
+
   return (
       <div className={dark ? "sidebar-navigation dark" : "sidebar-navigation"}>
         <div className="brand">
           <a href="/">LOGO</a>
         </div>
-        <hr />
         <ul className="primary-navigation">
           <li className="sub-navigation-trigger" id="section-subnav">
-            <a href="#">
+            <a href="#" onClick={handleSubNav}>
               <i className="far fa-gear fa-fw"></i>
               <span>Link</span>
-              <i className="far fa-chevron-down fa-fw"></i>
+              <i className="dropdown-arrow far fa-chevron-down fa-fw"></i>
             </a>
             <ul className="sub-navigation-menu">
               <li>
@@ -41,6 +51,7 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
               </li>
             </ul>
           </li>
+          <li className="nav-heading">Heading</li>
           <li>
             <a href="#">
               <i className="far fa-bomb fa-fw"></i>
@@ -53,6 +64,7 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
               <span>Link</span>
             </a>
           </li>
+          <li className="nav-heading">Heading</li>
           <li>
             <a href="#">
               <i className="far fa-magic-wand-sparkles fa-fw"></i>
@@ -63,15 +75,19 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
             <a href="#">
               <i className="far fa-bell fa-fw"></i>
               <span>Link</span>
+              <span className="badge-container"><span className="count">3</span></span>
             </a>
           </li>
         </ul>
         <hr />
         <div className="sidebar-footer">
           <a href="#">
-            <i className="far fa-circle-user fa-lg"></i>
-            <span>User Name</span>
-            <i className="far fa-ellipsis-vertical fa-fw"></i>
+            <i className="fal fa-circle-user fa-lg"></i>
+            <span>
+              User Name<br />
+              <span className="useremail">user.name@example.com</span>
+            </span>
+            <i className="dropdown-ellipsis far fa-ellipsis-vertical fa-fw"></i>
           </a>
           <ul className="sidebar-footer-menu">
             <li>
@@ -101,6 +117,6 @@ SidebarNavigation.propTypes = {
 };
 
 SidebarNavigation.defaultProps = {
-  dark: true,
+  dark: false,
   lockedFooter: true
 };
