@@ -38,14 +38,19 @@
         gap: 1rem;
         font-weight: bold;
         font-size: 1.4rem;
+        span:not(.badge-container, .count) {
+          flex-grow: 1;
+        }
         i {
           flex-shrink: 1;
           font-size: 1.8rem;
           &.dropdown-arrow {
             transition: all .1s ease;
             font-size: 1.2rem;
-            flex-grow: 1;
             text-align: right;
+            &.spin-icon-up {
+              rotate: 180deg;
+            }
           }
         }
         span.badge-container {

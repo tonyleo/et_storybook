@@ -18,6 +18,11 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
     } else {
       e.target.parentNode.nextSibling.classList.toggle('show');
     }
+    if(e.target.classList.contains('dropdown-arrow')) {
+      e.target.classList.toggle('spin-icon-up');
+    } else {
+      console.log('not-dropdown');
+    }
 
   }
 
