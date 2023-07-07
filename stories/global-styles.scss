@@ -72,15 +72,19 @@ $breakpoint-size: (
     }
 };
 
+$fontStack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+$fontSize: 10px;
 $headerHeight: 70px;
 $sidebarWidth: 245px;
+$sidebarSmallWidth: 70px;
 $sidebarMinHeight: calc(100vh - $headerHeight);
 
 html {
-    font-size: 10px;
+    font-size: $fontSize;
 }
 body {
     font-size: 1.6rem !important;
+    font-family: $fontStack;
 }
 
 span.status-badge {

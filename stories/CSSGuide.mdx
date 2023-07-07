@@ -89,24 +89,28 @@ Variables in SCSS are the powerhouse for making reuasable CSS structures. This f
 <th>Description</th>
 </tr>
 <tr>
-<td><strong>Font Stack</strong><br />$font-stack</td>
-<td>Specify the selected font and fallbacks to support. <br /><strong>$font-stack: "proxima", "Proxima Nova", "Lato", Helvetica, Arial, sans-serif;</strong></td>
+<td><strong>Font Stack</strong><br />$fontStack</td>
+<td>Specify the selected font and fallbacks to support. <br /><strong>$fontStack: "proxima", "Proxima Nova", "Lato", Helvetica, Arial, sans-serif;</strong></td>
 </tr>
 <tr>
-<td><strong>Font Size</strong><br />$font-size</td>
-<td>A default root unit of size for font to be on the body. Recommended starting point is always <strong>10px</strong>. This makes it easy later. With 10px root, all sizing can be done in rem but it relates to a pixel value for ease in setup. <strong>16px = 1.6rem</strong>. Later, changing this variable will proportiantely resize everything appropriately.<br /><strong>$font-size: 10px;</strong></td>
+<td><strong>Font Size</strong><br />$fontSize</td>
+<td>A default root unit of size for font to be on the body. Recommended starting point is always <strong>10px</strong>. This makes it easy later. With 10px root, all sizing can be done in rem but it relates to a pixel value for ease in setup. <strong>16px = 1.6rem</strong>. Later, changing this variable will proportiantely resize everything appropriately.<br /><strong>$fontSize: 10px;</strong></td>
 </tr>
 <tr>
-<td><strong>Header Height</strong><br />$header-height</td>
-<td>Height of the header. This does not have to be used for setting any height explicitly, but it can. It's still useful for the following variable for calculations.<br /><strong>$header-height: 70px;</strong></td>
+<td><strong>Header Height</strong><br />$headerHeight</td>
+<td>Height of the header. This does not have to be used for setting any height explicitly, but it can. It's still useful for the following variable for calculations.<br /><strong>$headerHeight: 70px;</strong></td>
 </tr>
 <tr>
-<td><strong>Sidebar Width</strong><br />$sidebar-width</td>
-<td>For always visible sidebars, the default width of that element.<br /><strong>$sidebar-width: 245px;</strong></td>
+<td><strong>Sidebar Width</strong><br />$sidebarWidth</td>
+<td>For always visible sidebars, the default width of that element.<br /><strong>$sidebarWidth: 245px;</strong></td>
 </tr>
 <tr>
-<td><strong>Sidebar Min Height</strong><br />$sidebar-min-height</td>
-<td>In the case of a sidebar that should be the full height of the window - minus the header, this can be a useful variable.<br /><strong>$sidebar-min-height: calc(100vh - $header-height);</strong></td>
+<td><strong>Sidebar Small Width</strong><br />$sidebarSmallWidth</td>
+<td>For always visible sidebars, the default width of that element when in smaller breakpoints.<br /><strong>$sidebarSmallWidth: 70px;</strong></td>
+</tr>
+<tr>
+<td><strong>Sidebar Min Height</strong><br />$sidebarMinHeight</td>
+<td>In the case of a sidebar that should be the full height of the window - minus the header, this can be a useful variable.<br /><strong>$sidebarMinHeight: calc(100vh - $header-height);</strong></td>
 </tr>
 </table>
 

@@ -9,13 +9,15 @@ import './SidebarNavigation.scss';
  * 
  * Supports a light and dark mode. CSS is commented to find colors used in component and can be replaced with palette colors.
  */
-export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
+export const SidebarNavigation = ({dark, ...props }) => {
 
   const handleSubNav = (e) => {
     e.preventDefault();
     if(e.target.tagName.toLowerCase() === 'li' || e.target.tagName.toLowerCase() === 'a'){
+      e.target.nextSibling.style.top = e.target.parentNode.offsetTop + "px";
       e.target.nextSibling.classList.toggle('show');
     } else {
+      e.target.parentNode.nextSibling.style.top = e.target.parentNode.offsetTop + "px";
       e.target.parentNode.nextSibling.classList.toggle('show');
     }
     if(e.target.classList.contains('dropdown-arrow')) {
@@ -127,10 +129,8 @@ export const SidebarNavigation = ({dark, lockedFooter, ...props }) => {
 
 SidebarNavigation.propTypes = {
   dark: PropTypes.bool,
-  lockedFooter: PropTypes.bool
 };
 
 SidebarNavigation.defaultProps = {
   dark: false,
-  lockedFooter: true
 };

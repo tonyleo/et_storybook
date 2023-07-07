@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Navigation/Sidebar Navigation/Vanilla JS" />
+
+# Sidebar Navigation Vanilla JS 
+
+```
+ // sub-navigation triggers
+var subnavTriggers = document.getElementsByClassName('sub-navigation-trigger');
+var toggleSubNavigation = function(e) {
+  e.preventDefault();
+  this.querySelector('.sub-navigation-menu').style.top = this.offsetTop+"px";
+  this.querySelector('.sub-navigation-menu').classList.toggle('show');
+  this.querySelector('.dropdown-arrow').classList.toggle('spin-icon-up');
+};
+Array.from(subnavTriggers).forEach(function(trigger){
+  trigger.addEventListener('click', toggleSubNavigation);
+});
+
+// sidebar-footer-menu trigger
+var sidebarFooterToggle = document.getElementById('sidebar-footer-toggle');
+var toggleSidebarFooterMenu = function(e) {
+  e.preventDefault();
+  this.parentNode.querySelector('.sidebar-footer-menu').classList.toggle('show');
+};
+sidebarFooterToggle.addEventListener('click', toggleSidebarFooterMenu);
+```
