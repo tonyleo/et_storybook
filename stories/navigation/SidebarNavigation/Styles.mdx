@@ -165,6 +165,13 @@ import { Meta } from '@storybook/blocks';
           padding-right: .3rem;
         }
       }
+      img.user-avatar {
+        flex-shrink: 1;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 3.5rem;
+        overflow: hidden;
+      }
       &:hover {
         background-color: palette(grey,light-100);            // color
         color: palette(grey,dark-900);                        // color
@@ -184,7 +191,7 @@ import { Meta } from '@storybook/blocks';
       border-top: 1px solid palette(grey,light-100);         // color
       width: 100%;
       z-index:1;
-      bottom: 48px;
+      bottom: 47px;
       max-height: 0;
       overflow: hidden;
       transition: max-height .5s ease;
@@ -307,7 +314,7 @@ import { Meta } from '@storybook/blocks';
           .sub-navigation-menu {
             position: absolute;
             top: 0;
-            left: $sidebar-small-width;
+            left: $sidebarSmallWidth;
             background-color: palette(grey, light-100);       // color
             min-width: 100px;
             li {
@@ -363,7 +370,7 @@ import { Meta } from '@storybook/blocks';
           a {
             padding: 0;
             &:hover {
-              background-color: transparent;                    // color
+              background-color: transparent;                  // color
               color: white;                                   // color
             }
           }
@@ -390,7 +397,7 @@ import { Meta } from '@storybook/blocks';
             a {
               &:hover {
                 background-color: transparent;                // color
-                color: white;                               // color
+                color: white;                                 // color
               }
             }
           }

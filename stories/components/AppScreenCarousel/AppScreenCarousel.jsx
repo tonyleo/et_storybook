@@ -5,7 +5,6 @@ import './AppScreenCarousel.scss';
 
 /**
  * 
- * <span className="status-badge workinprogress">Work In Progress</span>
  * 
  * Carousel for showing App Screens. Will work for any vertically oriented graphic.
  * 

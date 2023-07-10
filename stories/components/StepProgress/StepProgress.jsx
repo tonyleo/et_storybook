@@ -4,7 +4,6 @@ import '../../global-styles.scss';
 import './StepProgress.css';
 
 /**
- * <span className="status-badge workinprogress">Work In Progress</span>
  * 
  * Progress indicator for steps in a progression. Example usage is in an onboarding flow.
  * 

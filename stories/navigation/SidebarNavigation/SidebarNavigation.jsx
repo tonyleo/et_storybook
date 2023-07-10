@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './SidebarNavigation.scss';
 
 /**
- * <span className="status-badge workinprogress">Work In Progress</span>
  * 
  * Sidebar will appear full height and if sidebar contents is taller than available viewport allows, will become scrollable.
  * 
