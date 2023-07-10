@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap-storybook';
-import '../../global-styles.scss';
+import './TopNavigation.scss';
 
 /**
  * <span className="status-badge workinprogress">Work In Progress</span>
@@ -9,89 +8,135 @@ import '../../global-styles.scss';
  * Top Navigation will display as a header with brand and navigation links. Supports a mobile view where the menu links will expand into vertical sidebar menu drawers.
  * 
  */
-export const TopNavigation = ({ showUserName, ...props }) => {
+export const TopNavigation = ({ dark, showUserName, ...props }) => {
+
+  const handleSubNav = (e) => {
+    e.preventDefault();
+    if(e.target.tagName.toLowerCase() === 'li' || e.target.tagName.toLowerCase() === 'a'){
+      e.target.nextSibling.classList.toggle('show');
+    } else {
+      e.target.parentNode.nextSibling.classList.toggle('show');
+    }
+    if(e.target.classList.contains('dropdown-arrow')) {
+      e.target.classList.toggle('spin-icon-up');
+    } else {
+      e.target.parentNode.querySelector('.dropdown-arrow').classList.toggle('spin-icon-up');
+    }
+  }
+
+  const toggleAccountMenu = (e) => {
+    e.preventDefault();
+    document.getElementsByClassName('account-menu')[0].classList.toggle('show');
+  }
+
+
   return (
-    <Navbar bg="dark" variant="dark">
-        <div className="container-fluid">
-          <Navbar.Brand href="/">
-            LOGO
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navigation-menu" />
-          <Navbar.Collapse id="navigation-menu">
-            <Nav className="me-auto my-2 my-lg-0">
-              <NavDropdown 
-                title={ 
-                  <span>
-                    <i className="far fa-gear" /> 
-                    <span className="pl-1 d-sm-none">Settings</span>
-                  </span> 
-                }
-                id="navigation-dropdown-settings"
-              >
-                <NavDropdown.Item href="#">
-                  Link
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Link
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Link
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Item>
-                  <Nav.Link href="#">
-                    <i className="far fa-bomb" /> 
-                    <span className="pl-1 d-sm-none">Link</span>
-                  </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                  <Nav.Link href="#">
-                    <i className="far fa-rocket" /> 
-                    <span className="pl-1 d-sm-none">Link</span>
-                  </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                  <Nav.Link href="#">
-                    <i className="far fa-magic-wand-sparkles" /> 
-                    <span className="pl-1 d-sm-none">Link</span>
-                  </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                  <Nav.Link href="#">
-                    <i className="far fa-bell" /> 
-                    <span className="pl-1 d-sm-none">Notifications</span>
-                  </Nav.Link>
-              </Nav.Item>
-              <NavDropdown 
-                title={ 
-                  <span>
-                    <i className="far fa-circle-user" /> 
-                    {showUserName ? <span className="ml-3 d-sm-none">John Smith</span> : <span className="ml-3">John Smith</span>}
-                  </span> 
-                }
-                id="navigation-dropdown-user"
-              >
-                <NavDropdown.Item href="#">
-                  Profile
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Change Password
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
+    <header class={dark ? "top-navigation dark" : "top-navigation"}>
+      <div class="nav-toggle-left">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand">
+        <a href="/">LOGO</a>
+      </div>
+      <div class="main-navigation">
+        <ul>
+          <li class="sub-navigation-container">
+            <a href="#" class="sub-navigation-toggle" onClick={handleSubNav}>
+              <i class="far fa-gear"></i>
+              <span>Administration</span>
+              <i class="dropdown-arrow far fa-chevron-down"></i>
+            </a>
+            <ul class="sub-navigation-menu">
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Link</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">
+              <i class="far fa-bomb"></i>
+              <span>Link</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="far fa-rocket-launch"></i>
+              <span>Link</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="far fa-magic-wand-sparkles"></i>
+              <span>Link</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="right-navigation">
+        <ul>
+          <li>
+            <a href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge-container">
+                <span class="count">3</span>
+              </span>
+              <span>Notifications</span>
+            </a>
+          </li>
+          <li class="logged-in-user-container">
+            <a href="#" class="logged-in-user account-menu-toggle" onClick={toggleAccountMenu}>
+              <i class="fal fa-circle-user fa-lg"></i>
+              <span class="account-info">
+                <span class="username">User Name</span>
+                <span class="useremail">user.name@example.com</span>
+              </span>
+              <i class="far fa-ellipsis-vertical"></i>
+            </a>
+            <ul class="account-menu">
+              <li>
+                <a href="#">
+                  <span>Notification Settings</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Change Password</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Log Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-toggle-right">
+          <i class="fas fa-bars"></i>
         </div>
-    </Navbar>
+      </div>
+    </header>
   );
 };
 
 TopNavigation.propTypes = {
+  dark: PropTypes.bool,
   showUserName: PropTypes.bool
 };
 
 TopNavigation.defaultProps = {
+  dark: false,
   showUserName:true
 };

@@ -1,0 +1,231 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Navigation/Top Navigation/Styles" />
+
+# Top Navigation Styles
+
+```
+header.top-navigation {
+    height: $headerHeight;
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem;
+    gap: 2rem;
+    background-color: palette(grey,light-50);                       //color
+    align-items: center;
+    font-weight: bold;
+    .nav-toggle-left,
+    .nav-toggle-right {
+      display: none;
+    }
+    .brand {
+      margin-right: 2rem;
+      a {
+        color: palette(grey, dark-600);                             // color
+        text-decoration: none;
+      }
+    }
+    .main-navigation {
+      flex-grow: 1;
+      font-size: 1.4rem;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+        li {
+          &.sub-navigation-container {
+            position: relative;
+          }
+          a {
+            text-decoration: none;
+            color: palette(grey,dark-600);                          // color
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .5rem;
+            border-radius: 3rem;
+            padding: .5rem 1.5rem;
+            i {
+              font-size: 1.25em;
+            }
+            &:hover {
+              background-color: palette(grey, light-100);           // color
+              color: palette(grey,dark-900);                        // color
+            }
+          }
+          .sub-navigation-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s ease, padding .4s ease;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: palette(grey,light-100);              // color
+            &.show {
+              max-height: 900px;
+              padding: 1rem 0;
+            }
+            li {
+              a {
+                padding: .5rem 2.5rem .5rem 1.5rem;
+                min-width: 100px;
+                &:hover {
+                  color: white;                                     // color
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .badge-container {
+      padding: .2rem .5rem;
+      border-radius: 1rem;
+      background-color: palette(grey,light-100);                    // color
+      font-size: 1rem;
+    }
+    .right-navigation {
+      font-size: 1.4rem;
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+        li {
+          &.logged-in-user-container {
+            position: relative;
+          }
+          a {
+            color: palette(grey, dark-600);                         // color
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .5rem;
+            border-radius: 3rem;
+            padding: .5rem 1.5rem;
+            &:hover {
+              background-color: palette(grey, light-100);           // color
+              color: palette(grey, dark-900);                       // color
+              .badge-container {
+                background-color: palette(grey, light-200);         // color
+              }
+            }
+            i {
+              font-size: 1.25em;
+            }
+            &.logged-in-user {
+              i:not(.fa-chevron-down, .fa-ellipsis-vertical) {
+                font-size: 3.5rem;
+              }
+              .account-info {
+                display: flex;
+                flex-direction: column;
+                line-height: 1.6rem;
+                justify-content: center;
+                .useremail {
+                  font-size: 1.2rem;
+                  font-weight: normal;
+                }
+              }
+            }
+          }
+          .account-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s ease, padding .4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            right: 0;
+            top: 56px;
+            background-color: palette(grey, light-100);            // color
+            &.show {
+              max-height: 900px;
+              padding: 1rem 0;
+            }
+            a {
+              padding: .5rem 2.5rem .5rem 1.5rem;
+              &:hover {
+                color: white;                                      // color
+              }
+            }
+            
+          }
+        }
+      }
+    }
+    &.dark {                                                        // dark mode color overrides
+      background-color: palette(grey,dark-800);                   //color
+      .brand {
+        a {
+          color: palette(grey, light-200);                        // color
+        }
+      }
+      .main-navigation {
+        ul {
+          li {
+            a {
+              color: palette(grey,light-50);                      // color
+              &:hover {
+                background-color: palette(grey, dark-600);        // color
+                color: palette(grey,light-50);                    // color
+              }
+            }
+            .sub-navigation-menu {
+              background-color: palette(grey,dark-600);           // color
+              li {
+                a {
+                  &:hover {
+                    background-color: transparent;                  // color
+                    color: palette(grey, light-300);              // color
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .badge-container {
+        background-color: palette(grey);                          // color
+        color: palette(grey, light-50);                           // color
+      }
+      .right-navigation {
+        ul {
+          li {
+            a {
+              color: palette(grey, light-50);                     // color
+              &:hover {
+                background-color: palette(grey, dark-600);        // color
+                color: palette(grey, light-50);                   // color
+                .badge-container {
+                  background-color: palette(grey);                // color
+                }
+              }
+            }
+            .account-menu {
+              background-color: palette(grey, dark-600);           // color
+              a {
+                &:hover {
+                  color: palette(grey, light-300);                 // color
+                }
+              }
+  
+            }
+          }
+        }
+      }
+    }
+  }
+```

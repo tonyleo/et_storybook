@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="Navigation/Top Navigation/Vanilla JS" />
+
+# Top Navigation Vanilla JS 
+
+```
+// sub-navigation triggers
+var subnavTriggers = document.getElementsByClassName('sub-navigation-toggle');
+var toggleSubNavigation = function(e) {
+  e.preventDefault();
+  this.parentNode.querySelector('.sub-navigation-menu').classList.toggle('show');
+  this.parentNode.querySelector('.dropdown-arrow').classList.toggle('spin-icon-up');
+};
+Array.from(subnavTriggers).forEach(function(trigger){
+  trigger.addEventListener('click', toggleSubNavigation);
+});
+
+// account menu trigger
+var accountMenuToggle = document.getElementsByClassName('account-menu-toggle')[0];
+var toggleAccountMenu = function(e) {
+  e.preventDefault();
+  this.parentNode.querySelector('.account-menu').classList.toggle('show');
+};
+accountMenuToggle.addEventListener('click', toggleAccountMenu);
+```
