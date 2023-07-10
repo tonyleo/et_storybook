@@ -121,6 +121,12 @@ header.top-navigation {
             &.logged-in-user {
               i:not(.fa-chevron-down, .fa-ellipsis-vertical) {
                 font-size: 3.5rem;
+                padding-top: 1.75rem;
+                padding-bottom: 1.75rem;
+              }
+              .user-avatar {
+                width: 3.5rem;
+                height: 3.5rem;
               }
               .account-info {
                 display: flex;
@@ -151,11 +157,29 @@ header.top-navigation {
             }
             a {
               padding: .5rem 2.5rem .5rem 1.5rem;
+              span {
+                white-space: nowrap;
+              }
               &:hover {
                 color: white;                                      // color
               }
             }
             
+          }
+        }
+      }
+    }
+    &.hide-nav-text {
+      .main-navigation,
+      .right-navigation {
+        > ul {
+          > li {
+            > a {
+              padding: .5rem .5rem;
+              span:not(.badge-container, .count) {
+                display: none;
+              }
+            }
           }
         }
       }

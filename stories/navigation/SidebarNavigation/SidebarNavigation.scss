@@ -158,6 +158,13 @@
           padding-right: .3rem;
         }
       }
+      img.user-avatar {
+        flex-shrink: 1;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 3.5rem;
+        overflow: hidden;
+      }
       &:hover {
         background-color: palette(grey,light-100);            // color
         color: palette(grey,dark-900);                        // color
@@ -177,7 +184,7 @@
       border-top: 1px solid palette(grey,light-100);         // color
       width: 100%;
       z-index:1;
-      bottom: 48px;
+      bottom: 47px;
       max-height: 0;
       overflow: hidden;
       transition: max-height .5s ease;

@@ -9,7 +9,7 @@ import './SidebarNavigation.scss';
  * 
  * Supports a light and dark mode. CSS is commented to find colors used in component and can be replaced with palette colors.
  */
-export const SidebarNavigation = ({dark, ...props }) => {
+export const SidebarNavigation = ({dark, user, ...props }) => {
 
   const handleSubNav = (e) => {
     e.preventDefault();
@@ -93,7 +93,7 @@ export const SidebarNavigation = ({dark, ...props }) => {
         <hr />
         <div className="sidebar-footer">
           <a href="#" id="sidebar-footer-toggle" onClick={toggleSidebarFooter}>
-            <i className="fal fa-circle-user fa-lg"></i>
+            {user == 'icon' ? <i className="fal fa-circle-user fa-lg"></i> : <img src="https://drive.google.com/uc?id=1ViEHjqPSSMBSpvKhLk3DIzTDv9_Z2YW4" className="user-avatar" />}
             <span>
               User Name<br />
               <span className="useremail">user.name@example.com</span>
@@ -129,8 +129,11 @@ export const SidebarNavigation = ({dark, ...props }) => {
 
 SidebarNavigation.propTypes = {
   dark: PropTypes.bool,
+  user: PropTypes.oneOf(['avatar', 'icon'])
+
 };
 
 SidebarNavigation.defaultProps = {
   dark: false,
+  user: 'icon'
 };

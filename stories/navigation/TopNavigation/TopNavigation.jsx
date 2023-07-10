@@ -8,7 +8,7 @@ import './TopNavigation.scss';
  * Top Navigation will display as a header with brand and navigation links. Supports a mobile view where the menu links will expand into vertical sidebar menu drawers.
  * 
  */
-export const TopNavigation = ({ dark, showUserName, ...props }) => {
+export const TopNavigation = ({ dark, user, showNavText, ...props }) => {
 
   const handleSubNav = (e) => {
     e.preventDefault();
@@ -29,9 +29,16 @@ export const TopNavigation = ({ dark, showUserName, ...props }) => {
     document.getElementsByClassName('account-menu')[0].classList.toggle('show');
   }
 
+  const topLevelClasses = () => {
+    let classes = 'top-navigation ';
+    if(dark) { classes += 'dark '};
+    if(!showNavText) { classes += 'hide-nav-text '};
+    return classes;
+  }
+
 
   return (
-    <header class={dark ? "top-navigation dark" : "top-navigation"}>
+    <header class={topLevelClasses()}>
       <div class="nav-toggle-left">
         <i class="fas fa-bars"></i>
       </div>
@@ -97,7 +104,7 @@ export const TopNavigation = ({ dark, showUserName, ...props }) => {
           </li>
           <li class="logged-in-user-container">
             <a href="#" class="logged-in-user account-menu-toggle" onClick={toggleAccountMenu}>
-              <i class="fal fa-circle-user fa-lg"></i>
+              {user == 'icon' ? <i class="fal fa-circle-user fa-lg"></i> : <img src="https://drive.google.com/uc?id=1ViEHjqPSSMBSpvKhLk3DIzTDv9_Z2YW4" className="user-avatar" />}
               <span class="account-info">
                 <span class="username">User Name</span>
                 <span class="useremail">user.name@example.com</span>
@@ -133,10 +140,12 @@ export const TopNavigation = ({ dark, showUserName, ...props }) => {
 
 TopNavigation.propTypes = {
   dark: PropTypes.bool,
-  showUserName: PropTypes.bool
+  user: PropTypes.oneOf(['avatar', 'icon']),
+  showNavText: PropTypes.bool
 };
 
 TopNavigation.defaultProps = {
   dark: false,
-  showUserName:true
+  user: 'icon',
+  showNavText: true
 };
